@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Academic profile of Your Name">
+  <title>Your Name | Academic Profile</title>
+
+  <style>
+    /* =========================================================
+       YOUR COLOUR PALETTE
+       Keep these three HEX values as they are, or change them
+       here to update the colours across the whole page.
+       ========================================================= */
+    :root {
+      --burgundy: #873F43;
+      --cream: #FFEEE3;
+      --black: #000000;
+
+      --page-width: 1100px;
+      --side-space: 7%;
+    }
+
+    /* Basic reset and page-wide settings */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--black);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* INTRODUCTION: burgundy background, cream text */
+    .hero {
+      min-height: 100vh;
+      background: var(--burgundy);
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      padding: 72px var(--side-space);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-inner {
+      width: 100%;
+      max-width: var(--page-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(190px, 0.7fr);
+      align-items: center;
+      gap: 70px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0 0 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.8rem, 7vw, 5.8rem);
+      font-weight: normal;
+      line-height: 1.03;
+      letter-spacing: -0.045em;
+    }
+
+    .hero .subtitle {
+      margin: 0 0 26px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero .intro-text {
+      max-width: 650px;
+      margin: 0;
+      font-size: 1.12rem;
+    }
+
+
+    /* Geometric decorations */
+    .hero::before,
+    .hero::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        pointer-events: none;
+
+        border: 2px solid #FFEEE3;
+        opacity: 0.15;
+    }
+
+    /* First shape: rotated square */
+    .hero::before {
+        width: 390px;
+        height: 390px;
+        top: -95px;
+        right: -95px;
+
+        transform: rotate(45deg);
+        border-radius: 34px;
+    }
+
+    /* Second shape: circle */
+    .hero::after {
+        width: 250px;
+        height: 250px;
+        left: 47%;
+        bottom: -175px;
+
+        border-radius: 50%;
+    }
+
+
+    /* Portrait placeholder. Replace the contents with an <img> when ready. */
+    .portrait-placeholder {
+        width: 100%;
+        max-width: 290px;
+        aspect-ratio: 3 / 4;
+        justify-self: end;
+        border: 1px solid var(--cream);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 18px;
+        overflow: hidden;
+    }
+
+    .portrait-placeholder img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+    }
+
+    .portrait-placeholder .portrait-mark {
+      width: 62px;
+      height: 62px;
+      border: 1px solid var(--cream);
+      border-radius: 50%;
+    }
+
+    /* Simple navigation */
+    .site-nav {
+      background: var(--cream);
+      border-bottom: 1px solid var(--burgundy);
+      padding: 16px var(--side-space);
+    }
+
+    .site-nav ul {
+      max-width: var(--page-width);
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 30px;
+    }
+
+    .site-nav a {
+      color: var(--burgundy);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      text-transform: none;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    .publication-icon {
+        width: 30px;
+        height: 30px;
+        margin-right: 8px;
+        vertical-align: bottom;
+    }
+
+    /* MAIN CONTENT: cream background, burgundy headings, black text */
+    main {
+      background: var(--cream);
+      padding: 0 var(--side-space);
+    }
+
+    .content-section {
+      max-width: var(--page-width);
+      margin: 0 auto;
+      padding: 100px 0;
+      border-bottom: 1px solid var(--burgundy);
+      display: flex;
+    }
+
+    .section-content {
+      width: min(100%, 690px);
+    }
+
+    /* Alternate the position of each section */
+    .align-left {
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    .align-right {
+      justify-content: flex-end;
+      text-align: right;
+    }
+
+    .section-number {
+      margin: 0 0 12px;
+      color: var(--burgundy);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 0.15em;
+    }
+
+    .content-section h2 {
+      margin: 0 0 28px;
+      color: var(--burgundy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 5vw, 3.7rem);
+      font-weight: normal;
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+    }
+
+    .content-section p {
+      margin: 0 0 18px;
+    }
+
+    .content-section a {
+      color: var(--burgundy);
+      text-underline-offset: 4px;
+    }
+
+    .entry {
+      margin: 0 0 30px;
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry h3 {
+      margin: 0 0 5px;
+      color: var(--black);
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .entry .meta {
+      margin: 0 0 8px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.88rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--cream);
+      color: var(--black);
+      padding: 28px var(--side-space);
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+    }
+
+    /* Mobile layout */
+    @media (max-width: 700px) {
+      .hero {
+        min-height: auto;
+        padding-top: 58px;
+        padding-bottom: 58px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .portrait-placeholder {
+        width: 190px;
+        justify-self: start;
+      }
+
+      .site-nav ul {
+        gap: 12px 18px;
+      }
+
+      .content-section {
+        padding: 70px 0;
+      }
+
+      /* Keep the requested alternating alignment on small screens too. */
+      .align-right {
+        justify-content: flex-end;
+        text-align: right;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- INTRODUCTION: edit the name, role and paragraph below. -->
+  <header class="hero" id="about">
+    <div class="hero-inner">
+      <div>
+        <h1>Conrado Catarcione</h1>
+        <p class="subtitle">PhD student · PESC | COPPE | UFRJ</p>
+        <p class="intro-text">
+          My research interests lie in Network Science and its applications
+          to epidemiology and infectious disease control.
+          In particular, my work focuses on the role of asymptomatic individuals
+          during epidemic outbreaks, investigating how their presence influences
+          disease transmission dynamics and the effectiveness of public health
+          interventions and control strategies.
+        </p>
+      </div>
+
+      <!-- PORTRAIT: see the instructions below to replace this placeholder. -->
+      <div class="portrait-placeholder" aria-label="Portrait placeholder">
+        <img src="my-portrait.jpg">
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation links jump to the corresponding section. -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <ul>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#experience">Academic experience</a></li>
+      <li><a href="#conferences">Conferences</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#contact">Get in touch</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- SECTION 1: LEFT -->
+    <section class="content-section align-left" id="publications">
+      <div class="section-content">
+        <p class="section-number">01 /</p>
+        <h2>Publications</h2>
+
+        <article class="entry">
+          <h3>Identifying Asymptomatic Nodes in Network Epidemics using Betweenness Centrality
+            <img src="virus.svg" class="publication-icon" alt="">
+          </h3>
+          <p class="meta">Conrado Catarcione Pinto, Daniel Ratton Figueiredo · Anais do XXIII Workshop em Desempenho de Sistemas Computacionais e de Comunicação (WPerformance) · 2024</p>
+          <p><a href="https://doi.org/10.5753/wperformance.2024.2414" target="_blank" rel="noopener noreferrer">Read publication</a></p>
+        </article>
+
+        <article class="entry">
+          <h3>Identifying Asymptomatic Nodes in Network Epidemics using Graph Neural Networks
+            <img src="virus.svg" class="publication-icon" alt="">
+          </h3>
+          <p class="meta">Conrado Catarcione Pinto, Amanda Camacho Novaes de Oliveira, Rodrigo Sapienza Luna, Daniel Ratton Figueiredo · Intelligent Systems (BRACIS) · 2026</p>
+          <p><a href="https://doi.org/10.1007/978-3-032-15984-7_3" target="_blank" rel="noopener noreferrer">Read publication</a></p>
+        </article>
+
+        <article class="entry">
+          <h3>Identifying Asymptomatic Nodes in SIS Network Epidemics using Betweenness Centrality over Time
+            <img src="virus.svg" class="publication-icon" alt="">
+          </h3>
+          <p class="meta">Conrado Catarcione Pinto, Vitor Martins Gouvêa, Daniel Ratton Figueiredo · Anais do XXV Workshop em Desempenho de Sistemas Computacionais e de Comunicação (WPerformance) · 2026</p>
+          <p><a href="https://doi.org/10.5753/wperformance.2026.23627" target="_blank" rel="noopener noreferrer">Read publication</a></p>
+        </article>
+
+        <article class="entry">
+          <h3>First and second order firing statistics of large neuronal networks with community structure
+            <img src="neuron.svg" class="publication-icon" alt="">
+          </h3>
+          <p class="meta">Thiago H. N. Coelho, Daniel Figueiredo, Giulio Iacobelli, Guilherme Ost, Conrado C. Pinto · Preprint · 2026</p>
+          <p><a href="https://doi.org/10.48550/arXiv.2610.41706" target="_blank" rel="noopener noreferrer">Read publication</a></p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: RIGHT -->
+    <section class="content-section align-right" id="experience">
+      <div class="section-content">
+        <p class="section-number">02 /</p>
+        <h2>Academic experience</h2>
+
+        <article class="entry">
+          <h3>PhD in Systems Engineering and Computer Science</h3>
+          <p class="meta">PESC | COPPE | UFRJ · March 2025 – Present</p>
+          <p>Advisor: Daniel Ratton Figueiredo</p>
+        </article>
+
+        <article class="entry">
+          <h3>Visiting PhD researcher</h3>
+          <p class="meta">Inria Sophia Antipolis - Méditerranée · September 2026 – January 2027</p>
+          <p>Advisor: Konstantin Avrachenkov</p>
+        </article>
+
+        <article class="entry">
+          <h3>MSc in Systems Engineering and Computer Science</h3>
+          <p class="meta">PESC | COPPE | UFRJ · March 2023 – February 2025</p>
+          <p>Advisors: Daniel Ratton Figueiredo, Guilherme Ost de Aguiar</p>
+          <p>Thesis: Analysis of Firing Rate and Correlation of Spike Trains from a Brain Network Model with Clusters</p>
+          <p><a href="https://pesc.coppe.ufrj.br/index.php/pt/academica/teses-e-dissertacoes/details/15/3199" target="_blank" rel="noopener noreferrer">Read thesis</a></p>
+
+        </article>
+
+         <article class="entry">
+          <h3>Bachelor's in Applied Mathematics</h3>
+          <p class="meta">Institute of Mathematics | UFRJ · 2018 – 2022</p>
+          <p>Advisor: Stefanella Boatto</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: LEFT -->
+    <section class="content-section align-left" id="conferences">
+      <div class="section-content">
+        <p class="section-number">03 /</p>
+        <h2>Conferences &amp; presentations</h2>
+
+        <article class="entry">
+          <h3>46th Congress of the Brazilian Computer Society (CSBC)</h3>
+          <p class="meta">Gramado - RS, Brazil · 2026</p>
+          <p>Identifying Asymptomatic Nodes in SIS Network Epidemics using Betweenness Centrality over Time</p>
+        </article>
+
+        <article class="entry">
+          <h3>35th Brazilian Conference on Intelligent Systems (BRACIS)</h3>
+          <p class="meta">Fortaleza - CE, Brazil · 2025</p>
+          <p>Identifying Asymptomatic Nodes in Network Epidemics using Graph Neural Networks</p>
+        </article>
+
+        <article class="entry">
+          <h3>16th International Conference on Complex Networks (CompleNet)</h3>
+          <p class="meta">Fortaleza - CE, Brazil · 2025</p>
+          <p>Identifying Asymptomatic Nodes in Network Epidemics using Network Centrality Metrics</p>
+        </article>
+
+        <article class="entry">
+          <h3>44th Congress of the Brazilian Computer Society (CSBC)</h3>
+          <p class="meta">Brasília - DF, Brazil · 2024</p>
+          <p>Identifying Asymptomatic Nodes in Network Epidemics using Betweenness Centrality</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: RIGHT -->
+    <section class="content-section align-right" id="awards">
+      <div class="section-content">
+        <p class="section-number">04 /</p>
+        <h2>Awards</h2>
+
+        <article class="entry">
+          <h3>Honorable Mention at WPerformance</h3>
+          <p class="meta">Brazilian Computer Society (SBC) · 2024</p>
+          <p>Awarded for Identifying Asymptomatic Nodes in Network Epidemics using Betweenness Centrality</p>
+        </article>
+
+        <article class="entry">
+          <h3>Nota 10 Scholarship</h3>
+          <p class="meta">Carlos Chagas Filho Foundation for Research Support of the State of Rio de Janeiro (FAPERJ) · 2024</p>
+          <p>Awarded for outstanding academic performance in the master’s program</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION 5: LEFT -->
+    <section class="content-section align-left" id="contact">
+      <div class="section-content">
+        <p class="section-number">05 /</p>
+        <h2>Get in touch</h2>
+        <p>If you would like to discuss my research, collaboration opportunities, or academic work, feel free to get in touch.</p>
+        <p><a href="mailto:conrado@cos.ufrj.br">conrado@cos.ufrj.br</a></p>
+        <p>
+          <a href="https://scholar.google.com/citations?hl=en&user=2g0T-QQAAAAJ"
+            target="_blank" rel="noopener noreferrer">Google Scholar</a> &nbsp;·&nbsp;
+
+          <a href="https://www.linkedin.com/in/conrado-catarcione-pinto-363a87342"
+            target="_blank" rel="noopener noreferrer">LinkedIn</a> &nbsp;·&nbsp;
+
+          <a href="https://lattes.cnpq.br/6317794294771638"
+            target="_blank" rel="noopener noreferrer">Lattes</a> &nbsp;·&nbsp;
+
+          <a href="https://github.com/catarcione"
+            target="_blank" rel="noopener noreferrer">GitHub</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Conrado Catarcione
+  </footer>
+
+</body>
+</html>
